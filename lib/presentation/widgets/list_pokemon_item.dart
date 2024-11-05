@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:parcial/entity/character_entity.dart';
-import 'package:parcial/presentation/screens/character/character_detail_screen.dart';
+import 'package:parcial/models/pokemon.dart';
+import 'package:parcial/presentation/screens/pokemons/pokemon_detail_screen.dart';
 
-class ListCharacterItem extends StatelessWidget {
-  final CharacterEntity character;
+class ListPokemonItem extends StatelessWidget {
+  final Pokemon pokemon;
 
-  const ListCharacterItem({super.key, required this.character});
+  const ListPokemonItem({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +23,18 @@ class ListCharacterItem extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
-              character.image ?? "https://via.placeholder.com/100",
+              pokemon.image ?? "https://via.placeholder.com/100",
               fit: BoxFit.contain,
             ),
           ),
         ),
-        title: Text(character.name ?? "Sin nombre"),
-        subtitle: Text(character.race ?? "Raza desconocida"),
+        title: Text(pokemon.name ?? "Sin nombre"),
+        subtitle: Text(pokemon.type ?? "Tipo desconocido"),
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CharacterDetailScreen(character: character),
+              builder: (context) => PokemonDetailScreen(pokemon: pokemon),
             ),
           );
         },

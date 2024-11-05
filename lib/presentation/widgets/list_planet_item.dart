@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:parcial/entity/character_entity.dart';
-import 'package:parcial/presentation/screens/character/character_detail_screen.dart';
+import 'package:parcial/entity/planet_entity.dart';
+import 'package:parcial/presentation/screens/planet/planet_details_screen.dart';
 
-class ListCharacterItem extends StatelessWidget {
-  final CharacterEntity character;
+class ListPlanetItem extends StatelessWidget {
+  final PlanetEntity planet;
 
-  const ListCharacterItem({super.key, required this.character});
+  const ListPlanetItem({super.key, required this.planet});
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +22,18 @@ class ListCharacterItem extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.network(
-              character.image ?? "https://via.placeholder.com/100",
-              fit: BoxFit.contain,
-            ),
+            child: planet.image != null
+                ? Image.network(planet.image!, fit: BoxFit.cover)
+                : const Placeholder(),
           ),
         ),
-        title: Text(character.name ?? "Sin nombre"),
-        subtitle: Text(character.race ?? "Raza desconocida"),
+        title: Text(planet.name ?? "Sin nombre"),
+        subtitle: Text(planet.description ?? "Sin descripción"),
         onTap: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CharacterDetailScreen(character: character),
+              builder: (context) => PlanetDetailScreen(planet: planet),
             ),
           );
         },

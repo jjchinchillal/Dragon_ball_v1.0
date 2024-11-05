@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:parcial/entity/character_entity.dart';
+import 'package:parcial/entity/planet_entity.dart';
 
-class CharacterDetailScreen extends StatelessWidget {
-  final CharacterEntity character;
+class PlanetDetailScreen extends StatelessWidget {
+  final PlanetEntity planet;
 
-  const CharacterDetailScreen({super.key, required this.character});
+  const PlanetDetailScreen({super.key, required this.planet});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(character.name ?? "Sin nombre"),
+        title: Text(planet.name ?? "Sin nombre"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -26,42 +26,42 @@ class CharacterDetailScreen extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.network(
-                    character.image ?? "https://via.placeholder.com/200",
+                    planet.image ?? "https://via.placeholder.com/200",
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
               const SizedBox(height: 20),
               Text(
-                "Raza: ${character.race ?? "Desconocida"}",
+                "Nombre: ${planet.name ?? "Desconocido"}",
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               Text(
-                "Ki: ${character.ki ?? "N/A"}",
+                "Descripción: ${planet.description ?? "No disponible"}",
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               Text(
-                "Género: ${character.gender ?? "N/A"}",
+                "Estado: ${planet.isDestroyed == true ? "Destruido" : "Intacto"}",
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
-              Text(
-                "Afiliación: ${character.affiliation ?? "N/A"}",
-                style: const TextStyle(fontSize: 16),
+              const Text(
+                "Personajes en este planeta:",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              Text(
-                "Planeta de origen: ${character.originPlanet?.name ?? "Desconocido"}",
-                style: const TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Descripción: ${character.description ?? "No disponible"}",
-                style: const TextStyle(fontSize: 16),
-              ),
+              planet.characters != null && planet.characters!.isNotEmpty
+                  ? Column(
+                      children: planet.characters!.map((character) {
+                        return ListTile(
+                          title: Text(character.name ?? "Sin nombre"),
+                        );
+                      }).toList(),
+                    )
+                  : const Text("No hay personajes asociados."),
             ],
           ),
         ),
