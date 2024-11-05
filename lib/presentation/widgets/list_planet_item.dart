@@ -28,7 +28,6 @@ class ListPlanetItem extends StatelessWidget {
           ),
         ),
         title: Text(planet.name ?? "Sin nombre"),
-        subtitle: Text(planet.description ?? "Sin descripción"),
         onTap: () {
           Navigator.push(
             context,

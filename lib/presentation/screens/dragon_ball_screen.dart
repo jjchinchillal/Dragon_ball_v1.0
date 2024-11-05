@@ -15,11 +15,11 @@ class DragonBallScreen extends StatelessWidget {
       "icon": Icons.public,
       "route": '/planets',
     },
-    {
+    /* {
       "title": "Transformaciones",
       "icon": Icons.flash_on,
       "route": '/transformations',
-    },
+    }, */
   ];
 
   @override

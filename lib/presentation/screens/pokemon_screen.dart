@@ -10,7 +10,7 @@ class PokemonScreen extends StatelessWidget {
       "icon": Icons.catching_pokemon,
       "route": '/pokemons',
     },
-    {
+    /*   {
       "title": "Berries",
       "icon": Icons.grass,
       "route": '/berries',
@@ -19,7 +19,7 @@ class PokemonScreen extends StatelessWidget {
       "title": "Movimientos",
       "icon": Icons.flash_on,
       "route": '/moves',
-    },
+    }, */
   ];
 
   @override
