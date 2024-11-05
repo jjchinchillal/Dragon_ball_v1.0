@@ -31,10 +31,8 @@ class DragonBallScreen extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 28,
-            color: Colors.orange,
           ),
         ),
-        backgroundColor: Colors.black,
         centerTitle: true,
       ),
       body: Container(
@@ -50,13 +48,12 @@ class DragonBallScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
+              color: Colors.white38,
               borderRadius: BorderRadius.circular(10),
             ),
             child: const Text(
               "Selecciona una opción del menú",
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -68,14 +65,11 @@ class DragonBallScreen extends StatelessWidget {
         child: Column(
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-              ),
+              decoration: BoxDecoration(),
               child: Center(
                 child: Text(
                   'Menú Dragon Ball',
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,7 +83,6 @@ class DragonBallScreen extends StatelessWidget {
                   return ListTile(
                     leading: Icon(
                       _menu[index]['icon'],
-                      color: Colors.orange,
                     ),
                     title: Text(
                       _menu[index]['title'],
@@ -108,10 +101,10 @@ class DragonBallScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orange,
         onPressed: () => Navigator.of(context).pop(),
         child: const Icon(Icons.arrow_back),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

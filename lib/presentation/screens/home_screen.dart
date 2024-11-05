@@ -12,10 +12,9 @@ class HomeScreen extends StatelessWidget {
           "Anime",
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.orange,
         centerTitle: true,
       ),
       body: Padding(

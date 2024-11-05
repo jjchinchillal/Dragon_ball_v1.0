@@ -43,7 +43,8 @@ class ListTransformationItem extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text("Descripción: ${transformation.description ?? 'Sin descripción'}"),
+                Text(
+                    "Descripción: ${transformation.description ?? 'Sin descripción'}"),
               ],
             ),
           ),
@@ -53,7 +54,8 @@ class ListTransformationItem extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TransformationDetailScreen(transformation: transformation),
+                builder: (context) =>
+                    TransformationDetailScreen(transformation: transformation),
               ),
             );
           }

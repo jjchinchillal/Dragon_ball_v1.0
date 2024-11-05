@@ -31,17 +31,15 @@ class PokemonScreen extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 28,
-            color: Colors.orange,
           ),
         ),
-        backgroundColor: Colors.black,
         centerTitle: true,
       ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(
-              'https://preview.redd.it/for-being-ashs-final-moments-in-the-anime-aim-to-be-a-v0-14qsjndw0coa1.jpg?auto=webp&s=c91b3feda9b1666e0019da2faeef2b90b3728fc1',
+              'https://i.pinimg.com/originals/34/e1/91/34e1910bb25227668afbb13d4dbb7dab.png',
             ),
             fit: BoxFit.cover,
           ),
@@ -50,13 +48,12 @@ class PokemonScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
+              color: Colors.white38,
               borderRadius: BorderRadius.circular(10),
             ),
             child: const Text(
               "Selecciona una opción del menú",
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -75,7 +72,6 @@ class PokemonScreen extends StatelessWidget {
                 child: Text(
                   'Menú Pokémon',
                   style: TextStyle(
-                    color: Colors.white,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -89,7 +85,6 @@ class PokemonScreen extends StatelessWidget {
                   return ListTile(
                     leading: Icon(
                       _menu[index]['icon'],
-                      color: Colors.orange,
                     ),
                     title: Text(
                       _menu[index]['title'],
@@ -108,10 +103,10 @@ class PokemonScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orange,
         onPressed: () => Navigator.of(context).pop(),
         child: const Icon(Icons.arrow_back),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

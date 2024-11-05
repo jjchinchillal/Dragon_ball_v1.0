@@ -64,7 +64,10 @@ class PlanetScreenState extends State<PlanetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Planetas"),
+        title: const Text(
+          "Planetas",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

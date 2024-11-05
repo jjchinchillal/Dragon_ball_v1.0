@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 
-const List<Color> _colorTheme = [
-  Colors.black,
-  Colors.white,
-  Colors.blue,
-  Colors.green,
-  Colors.red,
-  Colors.purple
-];
-
 class AppTheme {
-  final int selectedColor;
-  AppTheme({this.selectedColor = 0});
+  final bool isDarkTheme;
+
+  AppTheme({this.isDarkTheme = true});
 
   ThemeData themeData() {
     return ThemeData(
       useMaterial3: true,
-      colorSchemeSeed: _colorTheme[selectedColor],
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: Colors.black,
+      brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+      scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
       appBarTheme: AppBarTheme(
-        backgroundColor: _colorTheme[selectedColor],
-        foregroundColor: Colors.orange,
+        backgroundColor: isDarkTheme ? Colors.orange : Colors.orange,
+        foregroundColor: isDarkTheme ? Colors.black : Colors.white,
       ),
-      textTheme: const TextTheme(),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: isDarkTheme ? Colors.orange : Colors.white,
+        foregroundColor: isDarkTheme ? Colors.white : Colors.orange,
+      ),
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(
+            color: isDarkTheme ? Colors.white : Colors.black,
+            fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
+          color: isDarkTheme ? Colors.white : Colors.black87,
+        ),
+      ),
     );
   }
 }
