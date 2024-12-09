@@ -14,7 +14,6 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoading = false;
   bool _obscurePassword = true;
 
-  // Datos quemados para acceso
   final String _validEmail = "goku@dragonball.com";
   final String _validPassword = "Default123!";
 
@@ -50,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // Comunicación con el backend
     /*
     final response = await http.post(
-      Uri.parse("http://tu-endpoint-api/login"),
+      Uri.parse("http://127.0.0.1:3000/usuarios"),
       headers: {"Content-Type": "application/json"},
       body: json.encode({"email": email, "password": password}),
     );
