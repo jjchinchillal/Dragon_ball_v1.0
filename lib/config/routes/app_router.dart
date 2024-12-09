@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:parcial/presentation/screens/character/character_screen.dart';
 import 'package:parcial/presentation/screens/dragon_ball_screen.dart';
+import 'package:parcial/presentation/screens/login_screen.dart';
 import 'package:parcial/presentation/screens/planet/planet_screen.dart';
 import 'package:parcial/presentation/screens/pokemons/pokemon_list_screen.dart';
 import 'package:parcial/presentation/screens/transformation/transformation_screen.dart';
@@ -11,6 +12,10 @@ final GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
+      builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/home',
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(

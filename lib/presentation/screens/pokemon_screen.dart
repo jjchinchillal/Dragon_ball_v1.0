@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:parcial/presentation/widgets/custom_drawer.dart';
 
 class PokemonScreen extends StatelessWidget {
   const PokemonScreen({super.key});
@@ -10,16 +10,6 @@ class PokemonScreen extends StatelessWidget {
       "icon": Icons.catching_pokemon,
       "route": '/pokemons',
     },
-    /*   {
-      "title": "Berries",
-      "icon": Icons.grass,
-      "route": '/berries',
-    },
-    {
-      "title": "Movimientos",
-      "icon": Icons.flash_on,
-      "route": '/moves',
-    }, */
   ];
 
   @override
@@ -61,46 +51,9 @@ class PokemonScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-              ),
-              child: Center(
-                child: Text(
-                  'Menú Pokémon',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _menu.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Icon(
-                      _menu[index]['icon'],
-                    ),
-                    title: Text(
-                      _menu[index]['title'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onTap: () {
-                      context.push(_menu[index]['route']);
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+      drawer: CustomDrawer(
+        headerTitle: 'Menú Pokémon',
+        menuOptions: _menu,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).pop(),

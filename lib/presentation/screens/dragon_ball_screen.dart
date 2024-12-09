@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:parcial/presentation/widgets/custom_drawer.dart';
 
 class DragonBallScreen extends StatelessWidget {
   const DragonBallScreen({super.key});
@@ -15,11 +15,6 @@ class DragonBallScreen extends StatelessWidget {
       "icon": Icons.public,
       "route": '/planets',
     },
-    /* {
-      "title": "Transformaciones",
-      "icon": Icons.flash_on,
-      "route": '/transformations',
-    }, */
   ];
 
   @override
@@ -61,44 +56,9 @@ class DragonBallScreen extends StatelessWidget {
           ),
         ),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(),
-              child: Center(
-                child: Text(
-                  'Menú Dragon Ball',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _menu.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Icon(
-                      _menu[index]['icon'],
-                    ),
-                    title: Text(
-                      _menu[index]['title'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onTap: () {
-                      context.push(_menu[index]['route']);
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+      drawer: CustomDrawer(
+        headerTitle: 'Menú Dragon Ball',
+        menuOptions: _menu,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).pop(),
