@@ -43,8 +43,8 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 80,
-                          backgroundImage: NetworkImage(
-                            'https://w7.pngwing.com/pngs/192/205/png-transparent-dragonball-characters-illustration-goku-vegeta-t-shirt-gohan-dragon-ball-dragon-ball-z-manga-computer-wallpaper-fictional-character-thumbnail.png',
+                          backgroundImage: AssetImage(
+                            'assets/db_img1.png',
                           ),
                         ),
                         SizedBox(height: 10),
@@ -67,8 +67,8 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 80,
-                          backgroundImage: NetworkImage(
-                            'https://i.pinimg.com/originals/83/16/24/831624cde28386da9b1d0049a6004c16.png',
+                          backgroundImage: AssetImage(
+                            'assets/pk_img1.png',
                           ),
                         ),
                         SizedBox(height: 10),

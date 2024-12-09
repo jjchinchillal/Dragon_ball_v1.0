@@ -88,8 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 CircleAvatar(
                   radius: 80,
-                  backgroundImage: const NetworkImage(
-                    'https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/GVKYFVL425H4NLXPYQAGL4FTXE.jpg',
+                  backgroundImage: const AssetImage(
+                    'assets/db_pk.jpg',
                   ),
                   backgroundColor: theme.scaffoldBackgroundColor,
                 ),

@@ -49,6 +49,9 @@ flutter:
     - assets/db_1.mp4
     - assets/db_2.mp4
     - assets/pk_1.mp4
+    - assets/db_img1.png
+    - assets/pk_img1.png
+    - assets/db_pk.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
