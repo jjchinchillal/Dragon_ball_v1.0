@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 import 'package:parcial/presentation/widgets/custom_drawer.dart';
 
-class PokemonScreen extends StatelessWidget {
+class PokemonScreen extends StatefulWidget {
   const PokemonScreen({super.key});
 
   static final List<Map<String, dynamic>> _menu = [
@@ -11,6 +12,30 @@ class PokemonScreen extends StatelessWidget {
       "route": '/pokemons',
     },
   ];
+
+  @override
+  State<PokemonScreen> createState() => _PokemonScreenState();
+}
+
+class _PokemonScreenState extends State<PokemonScreen> {
+  late VideoPlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset('assets/pk_1.mp4')
+      ..initialize().then((_) {
+        _controller.setLooping(true);
+        _controller.play();
+        setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,35 +50,42 @@ class PokemonScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(
-              'https://i.pinimg.com/originals/34/e1/91/34e1910bb25227668afbb13d4dbb7dab.png',
-            ),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-              color: Colors.white38,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Text(
-              "Selecciona una opción del menú",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+      body: Stack(
+        children: [
+          if (_controller.value.isInitialized)
+            SizedBox.expand(
+              child: FittedBox(
+                fit: BoxFit.cover,
+                child: SizedBox(
+                  width: _controller.value.size.width,
+                  height: _controller.value.size.height,
+                  child: VideoPlayer(_controller),
+                ),
+              ),
+            )
+          else
+            const Center(child: CircularProgressIndicator()),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.white38,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Text(
+                "Selecciona una opción del menú",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
       drawer: CustomDrawer(
         headerTitle: 'Menú Pokémon',
-        menuOptions: _menu,
+        menuOptions: PokemonScreen._menu,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).pop(),
