@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:parcial/entity/character_entity.dart';
+import 'package:parcial/models/pokemon.dart';
 
-class CharacterDetailScreen extends StatelessWidget {
-  final CharacterEntity character;
+class PokemonDetailScreen extends StatelessWidget {
+  final Pokemon pokemon;
 
-  const CharacterDetailScreen({super.key, required this.character});
+  const PokemonDetailScreen({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(character.name ?? "Sin nombre"),
+        title: Text(pokemon.name ?? "Sin nombre"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -26,41 +26,47 @@ class CharacterDetailScreen extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Image.network(
-                    character.image ?? "https://via.placeholder.com/200",
+                    pokemon.image ?? "https://via.placeholder.com/200",
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
               const SizedBox(height: 20),
               Text(
-                "Raza: ${character.race ?? "Desconocida"}",
+                "Tipo: ${pokemon.type ?? "Desconocido"}",
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               Text(
-                "Ki: ${character.ki ?? "N/A"}",
+                "Habilidades: ${pokemon.abilities?.join(", ") ?? "No disponible"}",
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               Text(
-                "Género: ${character.gender ?? "N/A"}",
+                "Peso: ${pokemon.weight ?? "N/A"} kg",
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
               Text(
-                "Afiliación: ${character.affiliation ?? "N/A"}",
+                "Altura: ${pokemon.height ?? "N/A"} m",
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 10),
-              Text(
-                "Planeta de origen: ${character.originPlanet?.name ?? "Desconocido"}",
-                style: const TextStyle(fontSize: 16),
+              const Text(
+                "Estadísticas Base:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              Text(
-                "Descripción: ${character.description ?? "No disponible"}",
-                style: const TextStyle(fontSize: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: pokemon.stats?.entries.map((entry) {
+                      return Text(
+                        "${entry.key}: ${entry.value}",
+                        style: const TextStyle(fontSize: 16),
+                      );
+                    }).toList() ??
+                    [const Text("No disponible")],
               ),
             ],
           ),

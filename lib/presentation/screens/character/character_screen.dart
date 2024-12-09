@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parcial/entity/characte_entity.dart';
+import 'package:parcial/entity/character_entity.dart';
 import 'package:parcial/helpers/get_characters.dart';
 import 'package:parcial/presentation/widgets/list_character_item.dart';
 
@@ -41,10 +41,10 @@ class CharacterScreenState extends State<CharacterScreen> {
       _isLoading = true;
     });
 
-    final newCharacters = await _petition.getPJ(page: _currentPage);
+    final newCharacters = await _petition.getCharacters(page: _currentPage);
 
     setState(() {
-      characters.addAll(newCharacters);
+      characters.addAll(newCharacters as Iterable<CharacterEntity>);
       _currentPage++;
       _isLoading = false;
 
@@ -64,8 +64,15 @@ class CharacterScreenState extends State<CharacterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Personajes Dragon Ball"),
-        centerTitle: false,
+        title: const Text(
+          "Personajes",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: characters.isEmpty && _isLoading
           ? const Center(child: CircularProgressIndicator())
